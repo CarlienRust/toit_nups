@@ -14,14 +14,14 @@ export const pinterestService = {
   /**
    * Search for wedding inspiration (stub)
    */
-  async searchInspiration(query: string): Promise<any[]> {
+  async searchInspiration(_query: string): Promise<any[]> {
     throw new Error('Pinterest integration not yet implemented');
   },
 
   /**
    * Save pin to board (stub)
    */
-  async savePin(pinId: string, boardId: string): Promise<void> {
+  async savePin(_pinId: string, _boardId: string): Promise<void> {
     throw new Error('Pinterest integration not yet implemented');
   },
 };

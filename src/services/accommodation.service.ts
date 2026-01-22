@@ -8,10 +8,10 @@ export const accommodationService = {
    * Search accommodations (stub)
    */
   async searchAccommodations(
-    location: string,
-    checkIn: string,
-    checkOut: string,
-    guests: number
+    _location: string,
+    _checkIn: string,
+    _checkOut: string,
+    _guests: number
   ): Promise<any[]> {
     throw new Error('Accommodation API integration not yet implemented');
   },
@@ -19,7 +19,7 @@ export const accommodationService = {
   /**
    * Get accommodation details (stub)
    */
-  async getAccommodationDetails(id: string): Promise<any> {
+  async getAccommodationDetails(_id: string): Promise<any> {
     throw new Error('Accommodation API integration not yet implemented');
   },
 };

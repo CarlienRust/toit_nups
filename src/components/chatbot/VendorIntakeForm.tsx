@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { ListingType, PriceBand } from '../../domain/types';
-import { Category } from '../../domain/match';
+import { ListingType } from '../../domain/types';
 import { Select } from '../ui/Select';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';

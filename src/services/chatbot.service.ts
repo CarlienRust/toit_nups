@@ -1,7 +1,7 @@
-import { Listing, ListingType, PriceBand, WeddingPlan, SavedItem } from '../domain/types';
+import { Listing, PriceBand, WeddingPlan, SavedItem } from '../domain/types';
 import { rankListings } from '../domain/rank';
 import { Category, MatchResult } from '../domain/match';
-import { extractFiltersFromMessage, ExtractedFilters } from './chatbot-prompts';
+import { extractFiltersFromMessage } from './chatbot-prompts';
 
 export interface VendorPreferences {
   category: Category;
@@ -104,7 +104,7 @@ export function findVendorMatches(
   listings: Listing[],
   preferences: VendorPreferences,
   wedding: WeddingPlan | null,
-  savedItems: SavedItem[]
+  _savedItems: SavedItem[]
 ): VendorMatch[] {
   if (!wedding) {
     return [];
@@ -155,11 +155,11 @@ export function findVendorMatches(
         listing,
         score: matchResult.score,
         reasons,
-        distance: matchResult.distance_km || undefined,
+        distance: matchResult.distance_km ?? undefined,
         breakdown: matchResult.breakdown,
       };
     })
-    .filter((m): m is VendorMatch => m !== null);
+    .filter((m): m is VendorMatch => m !== null && m !== undefined);
 
   return matches;
 }
@@ -181,7 +181,7 @@ function getGuestEstimateFromRange(range: string | null): number | null {
 export function generateExplanation(
   matches: VendorMatch[],
   preferences: VendorPreferences,
-  wedding: WeddingPlan | null
+  _wedding: WeddingPlan | null
 ): string {
   if (matches.length === 0) {
     return "I couldn't find any vendors matching your criteria. Try adjusting your preferences, such as expanding the search radius or budget range.";

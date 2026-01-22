@@ -87,7 +87,7 @@ export interface ExtractedFilters {
 
 export function extractFiltersFromMessage(
   message: string,
-  weddingPlan: any
+  _weddingPlan: any
 ): ExtractedFilters {
   const lower = message.toLowerCase();
   const filters: ExtractedFilters = {

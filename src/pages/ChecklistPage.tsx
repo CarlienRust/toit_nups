@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ChecklistItem } from '../domain/types';
 import { useWeddingPlanStore } from '../state/useWeddingPlanStore';
 import { ChecklistItemRow } from '../components/checklist/ChecklistItemRow';
 import { ReminderPanel } from '../components/checklist/ReminderPanel';

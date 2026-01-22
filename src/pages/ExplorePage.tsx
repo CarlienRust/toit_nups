@@ -14,7 +14,6 @@ type ViewMode = 'list' | 'map';
 export const ExplorePage: React.FC = () => {
   const wedding = useWeddingPlanStore((state) => state.wedding);
   const addSavedItem = useWeddingPlanStore((state) => state.addSavedItem);
-  const savedItems = useWeddingPlanStore((state) => state.savedItems);
 
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [selectedType, setSelectedType] = useState<ListingType | 'all'>('all');

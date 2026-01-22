@@ -136,7 +136,7 @@ What would you like to find?`,
     setMessages((prev) => [...prev, userMessage]);
 
     // Parse refinement
-    const updates = parseRefinement(message, currentPreferences);
+    const updates = parseRefinement(message, currentPreferences, wedding);
     const updatedPreferences = { ...currentPreferences, ...updates };
     setCurrentPreferences(updatedPreferences);
 
