@@ -3,7 +3,6 @@ import { Listing } from '../../domain/types';
 import { WeddingPlan } from '../../domain/types';
 import { enquiriesService } from '../../services/enquiries.service';
 import { Card } from '../ui/Card';
-import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
 import { Textarea } from '../ui/Textarea';
 import { Button } from '../ui/Button';
@@ -120,7 +119,7 @@ Thank you!`;
           maxHeight: '90vh',
           overflowY: 'auto',
         }}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
       >
         <div
           style={{

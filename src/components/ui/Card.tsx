@@ -4,7 +4,7 @@ import { theme } from '../../styles/theme';
 interface CardProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export const Card: React.FC<CardProps> = ({ children, style, onClick }) => {

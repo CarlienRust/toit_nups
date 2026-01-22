@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-import { SavedItem, SavedItemStatus } from '../domain/types';
+import React, { useState, useEffect } from 'react';
+import { SavedItem, SavedItemStatus, Listing } from '../domain/types';
 import { useWeddingPlanStore } from '../state/useWeddingPlanStore';
 import { formatCurrency, formatDateShort } from '../domain/format';
+import { authService } from '../services/auth.service';
+import { enquiriesService } from '../services/enquiries.service';
+import { EnquiryModal } from '../components/listings/EnquiryModal';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Textarea } from '../components/ui/Textarea';
@@ -22,7 +25,7 @@ export const SavedPage: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editNotes, setEditNotes] = useState('');
   const [editCost, setEditCost] = useState('');
-  const [enquiryModalListing, setEnquiryModalListing] = useState<any>(null);
+  const [enquiryModalListing, setEnquiryModalListing] = useState<Listing | null>(null);
   const [enquiryStatuses, setEnquiryStatuses] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -40,7 +43,7 @@ export const SavedPage: React.FC = () => {
       if (userId) {
         const enquiries = await enquiriesService.getEnquiries(userId);
         const statusMap: Record<string, string> = {};
-        enquiries.forEach((enq) => {
+        enquiries.forEach((enq: { listing_id: string; status: string }) => {
           statusMap[enq.listing_id] = enq.status;
         });
         setEnquiryStatuses(statusMap);
@@ -269,7 +272,7 @@ export const SavedPage: React.FC = () => {
           onSave={async () => {
             const enquiries = await enquiriesService.getEnquiries(userId);
             const statusMap: Record<string, string> = {};
-            enquiries.forEach((enq) => {
+            enquiries.forEach((enq: { listing_id: string; status: string }) => {
               statusMap[enq.listing_id] = enq.status;
             });
             setEnquiryStatuses(statusMap);

@@ -65,7 +65,7 @@ export const ExplorePage: React.FC = () => {
         (listing) =>
           listing.name.toLowerCase().includes(query) ||
           listing.location_name.toLowerCase().includes(query) ||
-          listing.tags.some((tag) => tag.toLowerCase().includes(query))
+          listing.tags.some((tag: string) => tag.toLowerCase().includes(query))
       );
     }
 

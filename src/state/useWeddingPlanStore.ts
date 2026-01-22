@@ -26,22 +26,6 @@ interface WeddingPlanState {
   clearAll: () => void;
 }
 
-const defaultWedding: WeddingPlan = {
-  weddingDate: null,
-  guestCountRange: null,
-  totalBudget: null,
-  budgetPreset: null,
-  location: '',
-  locationLat: null,
-  locationLng: null,
-  radiusKm: 50,
-  themePrimary: '',
-  themeSecondary: null,
-  themeTags: [],
-  themeColors: [],
-  priorities: [],
-};
-
 export const useWeddingPlanStore = create<WeddingPlanState>((set, get) => ({
   userId: null,
   weddingId: null,
