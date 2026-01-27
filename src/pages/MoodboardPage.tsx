@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
-import { Tag } from '../components/ui/Tag';
-import { useWeddingPlanStore } from '../state/useWeddingPlanStore';
 import { theme } from '../styles/theme';
 
 interface MoodboardItem {
@@ -19,8 +17,6 @@ interface MoodboardItem {
 }
 
 export const MoodboardPage: React.FC = () => {
-  const wedding = useWeddingPlanStore((state) => state.wedding);
-  const setWedding = useWeddingPlanStore((state) => state.setWedding);
   const [items, setItems] = useState<MoodboardItem[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newItemUrl, setNewItemUrl] = useState('');
