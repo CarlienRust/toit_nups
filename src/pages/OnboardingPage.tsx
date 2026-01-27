@@ -75,7 +75,7 @@ export const OnboardingPage: React.FC = () => {
       locationLng: coords.lng,
       radiusKm: parseInt(radiusKm) || 50,
       themePrimary: themePrimary || '',
-      themeSecondary: themeSecondary || null,
+      themeSecondary: null,
       themeTags: [themeTag1, themeTag2, themeTag3].filter(Boolean),
       themeColors: [color1, color2, color3].filter(Boolean),
       priorities: priorities.slice(0, 3),
