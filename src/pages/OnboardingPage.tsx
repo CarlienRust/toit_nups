@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { WeddingPlan, GuestCountRange, BudgetPreset, Priority } from '../domain/types';
+import { WeddingPlan, GuestCountRange, Priority } from '../domain/types';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Select } from '../components/ui/Select';
@@ -16,15 +16,6 @@ const GUEST_COUNT_OPTIONS = [
   { value: '150+', label: '150+ guests' },
 ];
 
-const BUDGET_PRESET_OPTIONS = [
-  { value: '', label: 'Select preset' },
-  { value: 'under-50k', label: 'Under R50,000' },
-  { value: '50k-100k', label: 'R50,000 - R100,000' },
-  { value: '100k-200k', label: 'R100,000 - R200,000' },
-  { value: '200k-300k', label: 'R200,000 - R300,000' },
-  { value: '300k-500k', label: 'R300,000 - R500,000' },
-  { value: '500k+', label: 'R500,000+' },
-];
 
 const PRIORITY_OPTIONS: Priority[] = [
   'Venue',
@@ -46,9 +37,6 @@ export const OnboardingPage: React.FC = () => {
   );
   const [totalBudget, setTotalBudget] = useState(
     existingWedding?.totalBudget?.toString() || ''
-  );
-  const [budgetPreset, setBudgetPreset] = useState<BudgetPreset | ''>(
-    existingWedding?.budgetPreset || ''
   );
   const [location, setLocation] = useState(existingWedding?.location || '');
   const [radiusKm, setRadiusKm] = useState(existingWedding?.radiusKm?.toString() || '50');
@@ -82,7 +70,7 @@ export const OnboardingPage: React.FC = () => {
       weddingDate: weddingDate || null,
       guestCountRange: (guestCountRange as GuestCountRange) || null,
       totalBudget: totalBudget ? parseFloat(totalBudget) : null,
-      budgetPreset: (budgetPreset as BudgetPreset) || null,
+      budgetPreset: null,
       location: location || '',
       locationLat: coords.lat,
       locationLng: coords.lng,
@@ -165,15 +153,9 @@ export const OnboardingPage: React.FC = () => {
             Budget
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.md }}>
-            <Select
-              label="Budget Preset"
-              options={BUDGET_PRESET_OPTIONS}
-              value={budgetPreset}
-              onChange={(e) => setBudgetPreset(e.target.value as BudgetPreset | '')}
-            />
             <Input
               type="number"
-              label="Or enter exact budget (R)"
+              label="Total Budget (R)"
               value={totalBudget}
               onChange={(e) => setTotalBudget(e.target.value)}
               placeholder="e.g. 150000"
@@ -273,25 +255,64 @@ export const OnboardingPage: React.FC = () => {
               >
                 Theme Colors (3)
               </label>
-              <div style={{ display: 'flex', gap: theme.spacing.sm }}>
-                <Input
-                  type="color"
-                  value={color1}
-                  onChange={(e) => setColor1(e.target.value)}
-                  style={{ width: '80px', height: '40px' }}
-                />
-                <Input
-                  type="color"
-                  value={color2}
-                  onChange={(e) => setColor2(e.target.value)}
-                  style={{ width: '80px', height: '40px' }}
-                />
-                <Input
-                  type="color"
-                  value={color3}
-                  onChange={(e) => setColor3(e.target.value)}
-                  style={{ width: '80px', height: '40px' }}
-                />
+              <div style={{ display: 'flex', gap: theme.spacing.sm, alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.xs }}>
+                  <Input
+                    type="color"
+                    value={color1 || '#000000'}
+                    onChange={(e) => setColor1(e.target.value)}
+                    style={{ width: '80px', height: '40px' }}
+                  />
+                  {color1 && (
+                    <div
+                      style={{
+                        width: '80px',
+                        height: '40px',
+                        backgroundColor: color1,
+                        borderRadius: theme.borderRadius.sm,
+                        border: `1px solid ${theme.colors.border}`,
+                      }}
+                    />
+                  )}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.xs }}>
+                  <Input
+                    type="color"
+                    value={color2 || '#000000'}
+                    onChange={(e) => setColor2(e.target.value)}
+                    style={{ width: '80px', height: '40px' }}
+                  />
+                  {color2 && (
+                    <div
+                      style={{
+                        width: '80px',
+                        height: '40px',
+                        backgroundColor: color2,
+                        borderRadius: theme.borderRadius.sm,
+                        border: `1px solid ${theme.colors.border}`,
+                      }}
+                    />
+                  )}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.xs }}>
+                  <Input
+                    type="color"
+                    value={color3 || '#000000'}
+                    onChange={(e) => setColor3(e.target.value)}
+                    style={{ width: '80px', height: '40px' }}
+                  />
+                  {color3 && (
+                    <div
+                      style={{
+                        width: '80px',
+                        height: '40px',
+                        backgroundColor: color3,
+                        borderRadius: theme.borderRadius.sm,
+                        border: `1px solid ${theme.colors.border}`,
+                      }}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>

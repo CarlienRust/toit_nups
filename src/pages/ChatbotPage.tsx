@@ -195,11 +195,11 @@ What would you like to find?`,
         margin: '0 auto',
         padding: theme.spacing.xl,
         backgroundColor: theme.colors.background,
-        height: 'calc(100vh - 180px)',
-        maxHeight: 'calc(100vh - 180px)',
+        minHeight: 'calc(100vh - 180px)',
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',
+        overflowY: 'auto',
+        overflowX: 'hidden',
       }}
     >
       <div
@@ -208,6 +208,7 @@ What would you like to find?`,
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: theme.spacing.lg,
+          flexShrink: 0,
         }}
       >
         <h1
@@ -227,10 +228,12 @@ What would you like to find?`,
       </div>
 
       {showIntake ? (
-        <VendorIntakeForm
-          onSubmit={handleIntakeSubmit}
-          onCancel={undefined}
-        />
+        <div style={{ flexShrink: 0 }}>
+          <VendorIntakeForm
+            onSubmit={handleIntakeSubmit}
+            onCancel={undefined}
+          />
+        </div>
       ) : (
         <div
           style={{
@@ -241,6 +244,7 @@ What would you like to find?`,
             borderRadius: theme.borderRadius.lg,
             overflow: 'hidden',
             backgroundColor: theme.colors.surface,
+            minHeight: 0,
           }}
         >
           <ChatbotInterface

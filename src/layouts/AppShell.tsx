@@ -17,6 +17,7 @@ const navItems = [
   { path: '/dashboard', label: 'Plan', icon: dashboardIcon },
   { path: '/explore', label: 'Explore', icon: exploreIcon },
   { path: '/chatbot', label: 'Assistant', icon: chatbotIcon },
+  { path: '/moodboard', label: 'Moodboard', icon: savedIcon },
   { path: '/budget', label: 'Budget', icon: budgetIcon },
   { path: '/checklist', label: 'Checklist', icon: checklistIcon },
   { path: '/saved', label: 'Saved', icon: savedIcon },

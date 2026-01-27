@@ -11,6 +11,7 @@ import { SavedPage } from '../pages/SavedPage';
 import { BudgetPage } from '../pages/BudgetPage';
 import { ChecklistPage } from '../pages/ChecklistPage';
 import { ChatbotPage } from '../pages/ChatbotPage';
+import { MoodboardPage } from '../pages/MoodboardPage';
 import { AdminAddListingPage } from '../pages/AdminAddListingPage';
 
 export const Router: React.FC = () => {
@@ -85,6 +86,16 @@ export const Router: React.FC = () => {
             <ProtectedRoute>
               <AppShell>
                 <ChatbotPage />
+              </AppShell>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/moodboard"
+          element={
+            <ProtectedRoute>
+              <AppShell>
+                <MoodboardPage />
               </AppShell>
             </ProtectedRoute>
           }
