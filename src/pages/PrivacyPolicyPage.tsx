@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '../components/ui/Footer';
 import { theme } from '../styles/theme';
 
 export const PrivacyPolicyPage: React.FC = () => {
@@ -6,20 +7,27 @@ export const PrivacyPolicyPage: React.FC = () => {
     <div
       style={{
         minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
         backgroundColor: theme.colors.background,
-        padding: theme.spacing.xl,
       }}
     >
       <div
         style={{
-          maxWidth: '900px',
-          margin: '0 auto',
-          backgroundColor: theme.colors.surface,
-          padding: theme.spacing.xxl,
-          borderRadius: theme.borderRadius.lg,
-          boxShadow: theme.shadows.md,
+          flex: 1,
+          padding: theme.spacing.xl,
         }}
       >
+        <div
+          style={{
+            maxWidth: '900px',
+            margin: '0 auto',
+            backgroundColor: theme.colors.surface,
+            padding: theme.spacing.xxl,
+            borderRadius: theme.borderRadius.lg,
+            boxShadow: theme.shadows.md,
+          }}
+        >
         <h1
           style={{
             fontSize: theme.typography.fontSize['3xl'],
@@ -414,6 +422,8 @@ export const PrivacyPolicyPage: React.FC = () => {
           </p>
         </div>
       </div>
+      </div>
+      <Footer />
     </div>
   );
 };

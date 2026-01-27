@@ -4,6 +4,7 @@ import { authService } from '../services/auth.service';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Card } from '../components/ui/Card';
+import { Footer } from '../components/ui/Footer';
 import { theme } from '../styles/theme';
 
 export const LoginPage: React.FC = () => {
@@ -53,13 +54,20 @@ export const LoginPage: React.FC = () => {
       style={{
         minHeight: '100vh',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: theme.spacing.xl,
+        flexDirection: 'column',
         backgroundColor: theme.colors.background,
       }}
     >
-      <Card style={{ maxWidth: '400px', width: '100%' }}>
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: theme.spacing.xl,
+        }}
+      >
+        <Card style={{ maxWidth: '400px', width: '100%' }}>
         <h1
           style={{
             fontSize: theme.typography.fontSize['2xl'],
@@ -145,6 +153,8 @@ export const LoginPage: React.FC = () => {
           </button>
         </div>
       </Card>
+      </div>
+      <Footer />
     </div>
   );
 };

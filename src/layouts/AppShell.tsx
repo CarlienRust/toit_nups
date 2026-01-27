@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authService } from '../services/auth.service';
+import { Footer } from '../components/ui/Footer';
 import { theme } from '../styles/theme';
 import dashboardIcon from '../assets/dashboard.png';
 import exploreIcon from '../assets/explore.png';
@@ -107,12 +108,24 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
       <main
         style={{
           flex: 1,
-          paddingBottom: '80px', // Space for bottom nav
+          paddingBottom: '120px', // Space for footer and bottom nav
           paddingTop: user ? '60px' : '0', // Space for top bar
         }}
       >
         {children}
       </main>
+
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '60px', // Above the nav bar
+          left: 0,
+          right: 0,
+          zIndex: 999,
+        }}
+      >
+        <Footer />
+      </div>
 
       <nav
         style={{
